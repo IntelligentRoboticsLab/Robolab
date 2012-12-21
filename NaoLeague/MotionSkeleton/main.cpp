@@ -29,5 +29,8 @@ int main(int argc, char const *argv[])
         motProxy.setAngles("RShoulderRoll", 1, 0.7);
     }
 
+    // remove stiffness
+    motProxy.setStiffnesses("Body", 0);
+
     return 0;
 }
