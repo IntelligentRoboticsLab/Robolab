@@ -1,0 +1,130 @@
+{
+    "root":
+    [
+    {
+        "name"   : "RShoulderPitch",
+        "angles" : [2],
+        "times"  : [0.4]
+    }
+,
+    {
+        "name": "RShoulderRoll",
+        "angles": [-0.3],
+        "times": [0.4]
+    }
+,
+    {
+        "name": "RElbowYaw",
+        "angles": [0.7],
+        "times": [0.4]
+    }
+,
+    {
+        "name": "RElbowRoll",
+        "angles": [0.05],
+        "times": [0.4]
+    }
+,
+    {
+        "name": "LShoulderPitch",
+        "angles": [2],
+        "times": [0.4]
+    }
+,
+    {
+        "name": "LShoulderRoll",
+        "angles": [0.3],
+        "times": [0.4]
+    }
+,
+    {
+        "name": "LElbowYaw",
+        "angles": [-0.7],
+        "times": [0.4]
+    }
+,
+    {
+        "name": "LElbowRoll",
+        "angles": [-0.05],
+        "times": [0.4]
+    }
+,
+    {
+        "name": "LHipYawPitch",
+        "angles": [-0.7],
+        "times": [0.4]
+    }
+,
+    {
+        "Name": "RHipRoll",
+        "angles": [-0.23],
+        "times": [0.4]
+    }
+,
+    {
+        "Name": "RHipPitch",
+        "angles": [-1.57],
+        "times": [0.4]
+    }
+,
+    {
+        "Name": "RKneePitch",
+        "angles": [0.8],
+        "times": [0.4]
+    }
+,
+    {
+        "Name": "RAnklePitch",
+        "angles": [0.85],
+        "times": [0.4]
+    }
+,
+    {
+        "Name": "RAnkleRoll",
+        "angles": [0.06],
+        "times": [0.4]
+    }
+,
+    {
+        "Name": "LHipRoll",
+        "angles": [0.23],
+        "times": [0.4]
+    }
+,
+    {
+        "Name": "RAnkleRoll",
+        "angles": [0.06],
+        "times": [0.4]
+    }
+,
+    {
+        "Name": "LHipRoll",
+        "angles": [0.23],
+        "times": [0.4]
+    }
+,
+    {
+        "Name": "LHipPitch",
+        "angles": [-1.57],
+        "times": [0.4]
+    }
+,
+    {
+        "Name": "LKneePitch",
+        "angles": [0.8],
+        "times": [0.4]
+    }
+,
+    {
+        "Name": "LAnklePitch",
+        "angles": [0.85],
+        "times": [0.4]
+    }
+,
+    {
+        "Name": "LAnkleRoll",
+        "angles": [-0.06],
+        "times": [0.4]
+    }
+    ]
+}

@@ -28,6 +28,10 @@ class Motions
         // standup motions
         void getupFromBack();
 
+        // stiffness functions
+        void stiff();
+        void unstiff();
+
     private:
         /**
          * Struct to hold the information for a motion interpolation.

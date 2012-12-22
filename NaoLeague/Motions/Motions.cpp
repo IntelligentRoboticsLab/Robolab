@@ -13,13 +13,12 @@ Motions::Motions(string naoqi_ip)
     : m_motProxy(naoqi_ip)
 {
     m_motion_filenames.push_back(pair<string, string>("Motions/getupFromBack1.json", "getupFromBack1") );
+    m_motion_filenames.push_back(pair<string, string>("Motions/getupFromBack2.json", "getupFromBack2") );
 
     // parse each motion file
     BOOST_FOREACH (str_str_pair &file_key_pair, m_motion_filenames) {
         parseMotionFile(file_key_pair.first, file_key_pair.second);
     }
-
-    cout << m_interpolations.size() << endl;
 }
 
 Motions::~Motions()
@@ -87,8 +86,23 @@ void Motions::interpolate(string key)
     m_motProxy.angleInterpolation(iv.names, al_angles, al_times, true);
 }
 
+void Motions::stiff()
+{
+    m_motProxy.setStiffnesses("Body", 0.8);
+}
+
+void Motions::unstiff()
+{
+    m_motProxy.setStiffnesses("Body", 0);
+}
+
 int main(int argc, char const *argv[])
 {
     Motions m( string("0.0.0.0") );
+
+    // some testing
+    m.stiff();
+    m.unstiff();
+
     return 0;
 }
