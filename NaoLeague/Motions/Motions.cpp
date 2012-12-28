@@ -3,6 +3,8 @@
 #include <string>
 #include <iostream>
 
+#include <assert.h>
+
 using namespace std;
 using namespace AL;
 using boost::property_tree::ptree;
@@ -12,8 +14,9 @@ typedef pair<string, string> str_str_pair;
 Motions::Motions(string naoqi_ip)
     : m_motProxy(naoqi_ip)
 {
-    m_motion_filenames.push_back(pair<string, string>("Motions/getupFromBack1.json", "getupFromBack1") );
-    m_motion_filenames.push_back(pair<string, string>("Motions/getupFromBack2.json", "getupFromBack2") );
+    // TODO: figure out a better organisation for loading the files
+    m_motion_filenames.push_back(pair<string, string>("/home/maarten/Projects/Robolab/NaoLeague/Motions/Motions/getupFromBack1.json", "getupFromBack1") );
+    m_motion_filenames.push_back(pair<string, string>("/home/maarten/Projects/Robolab/NaoLeague/Motions/Motions/getupFromBack2.json", "getupFromBack2") );
 
     // parse each motion file
     BOOST_FOREACH (str_str_pair &file_key_pair, m_motion_filenames) {
@@ -27,6 +30,37 @@ Motions::~Motions()
 
 void Motions::getupFromBack()
 {
+    // lie down on back, move arms towards pushing position and legs upwards
+    setAngles(2, 0.7,
+              "HeadPitch", "HeadYaw",
+              -0.4, 0.0);
+
+    interpolate("getupFromBack1");
+    interpolate("getupFromBack2");
+}
+
+void Motions::setAngles(int numJoints, double speed, ...)
+{
+    // the varargs list contains first the joint names, then the joint angles,
+    // so its length is 2*numJoints
+    va_list args;
+    int list_length = 2 * numJoints;
+    va_start(args, list_length);
+    ALValue names, angles;
+
+    // first put the joint names in an array
+    for (int i = 0; i < numJoints; ++i) {
+        names.arrayPush( va_arg(args, char*) );
+    }
+
+    // and now the angles
+    for (int i = numJoints; i < list_length; ++i) {
+        angles.arrayPush( va_arg(args, double) );
+    }
+
+    va_end(args);
+
+    m_motProxy.setAngles(names, angles, speed);
 }
 
 void Motions::parseMotionFile(string filename, string key)
@@ -70,16 +104,16 @@ void Motions::interpolate(string key)
     
     // convert the vectors into ALValues
     // TODO: just make them ALValues in the first place
-    ALValue al_angles,
+    ALValue al_names,
+            al_angles,
             al_times;
 
     unsigned size = iv.angles.size();
-    al_angles.arraySetSize(size);
-    al_times.arraySetSize(size);
 
     for (unsigned i = 0; i < size; ++i) {
-        al_angles[i] = ALValue::array(iv.angles[i]);
-        al_times[i] = ALValue::array(iv.angles[i]);
+        al_names.arrayPush(iv.names[i]);
+        al_angles.arrayPush(iv.angles[i]);
+        al_times.arrayPush(iv.times[i]);
     }
 
     // actuate!
@@ -102,6 +136,7 @@ int main(int argc, char const *argv[])
 
     // some testing
     m.stiff();
+    m.getupFromBack();
     m.unstiff();
 
     return 0;

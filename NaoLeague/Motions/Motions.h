@@ -4,10 +4,14 @@
 #include <string>
 #include <vector>
 #include <map>
+
 #include <alproxies/almotionproxy.h>
+
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/json_parser.hpp>
 #include <boost/foreach.hpp>
+
+#include <stdarg.h>
 
 
 using namespace std;
@@ -62,6 +66,11 @@ class Motions
          * @param key The key to use for insertion into m_interpolations.
          */
         void parseMotionFile(string filename, string key);
+
+        /**
+         * Sets the given joints to the given angles, allowing for literal calling.
+         */
+        void setAngles(int numJoints, double speed, ...);
 
         /**
          * Interpolates a motion using the values retrieved from

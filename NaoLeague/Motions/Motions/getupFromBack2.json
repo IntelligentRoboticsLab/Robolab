@@ -56,73 +56,61 @@
     }
 ,
     {
-        "Name": "RHipRoll",
+        "name": "RHipRoll",
         "angles": [-0.23],
         "times": [0.4]
     }
 ,
     {
-        "Name": "RHipPitch",
+        "name": "RHipPitch",
         "angles": [-1.57],
         "times": [0.4]
     }
 ,
     {
-        "Name": "RKneePitch",
+        "name": "RKneePitch",
         "angles": [0.8],
         "times": [0.4]
     }
 ,
     {
-        "Name": "RAnklePitch",
+        "name": "RAnklePitch",
         "angles": [0.85],
         "times": [0.4]
     }
 ,
     {
-        "Name": "RAnkleRoll",
+        "name": "RAnkleRoll",
         "angles": [0.06],
         "times": [0.4]
     }
 ,
     {
-        "Name": "LHipRoll",
+        "name": "LHipRoll",
         "angles": [0.23],
         "times": [0.4]
     }
 ,
     {
-        "Name": "RAnkleRoll",
-        "angles": [0.06],
-        "times": [0.4]
-    }
-,
-    {
-        "Name": "LHipRoll",
-        "angles": [0.23],
-        "times": [0.4]
-    }
-,
-    {
-        "Name": "LHipPitch",
+        "name": "LHipPitch",
         "angles": [-1.57],
         "times": [0.4]
     }
 ,
     {
-        "Name": "LKneePitch",
+        "name": "LKneePitch",
         "angles": [0.8],
         "times": [0.4]
     }
 ,
     {
-        "Name": "LAnklePitch",
+        "name": "LAnklePitch",
         "angles": [0.85],
         "times": [0.4]
     }
 ,
     {
-        "Name": "LAnkleRoll",
+        "name": "LAnkleRoll",
         "angles": [-0.06],
         "times": [0.4]
     }
