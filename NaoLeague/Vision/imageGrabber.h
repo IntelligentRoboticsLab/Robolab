@@ -54,7 +54,7 @@ public:
 
 private:
 	void setCamProxy();
-	void ImageGrabber::destroyCameraProxy(); //destroys the proxy attached to AL::ALVideoDeviceProxy * cameraProxy;
+	void destroyCameraProxy(); //destroys the proxy attached to AL::ALVideoDeviceProxy * cameraProxy;
 	
 	AL::ALVideoDeviceProxy * cameraProxy;
 	AL::ALValue polledImage;

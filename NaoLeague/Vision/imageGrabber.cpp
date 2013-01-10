@@ -1,7 +1,7 @@
 #include"imageGrabber.h"
 #include <alproxies/alvideodeviceproxy.h>
 #include "../CommonSource/Macros.h"
-#include <opencv2\highgui\highgui.hpp>
+#include <opencv2/highgui/highgui.hpp>
 
 ImageGrabber::ImageGrabber(std::string robotIP, int cameraType, int cameraColorSpace, int FPS){
 	cameraProxy = NULL;
@@ -26,7 +26,11 @@ void ImageGrabber::setUsedCamera(int cameraNumber){
 
 void ImageGrabber::destroyCameraProxy(){
 	if(cameraProxy != NULL){
-		cameraProxy->unsubscribe(clientDefaultInputName);
+		try {
+			cameraProxy->unsubscribe(clientDefaultInputName);
+		}
+		catch (AL::ALError e) {
+		}
 		delete cameraProxy;
 	}
 	cameraProxy = NULL;
@@ -36,7 +40,11 @@ void ImageGrabber::destroyCameraProxy(){
 void ImageGrabber::setCamProxy(){
 	destroyCameraProxy();
 	cameraProxy = new AL::ALVideoDeviceProxy(this->robotIP);
-	cameraProxy->unsubscribe(clientDefaultInputName);
+	try {
+		cameraProxy->unsubscribe(clientDefaultInputName);
+	}
+	catch (AL::ALError e) {
+	}
 	clientName = cameraProxy->subscribe(clientDefaultInputName, cameraType, cameraColorSpace, FPS);
 	cameraProxy->setActiveCamera(clientDefaultInputName, AL::kBottomCamera);
 }
