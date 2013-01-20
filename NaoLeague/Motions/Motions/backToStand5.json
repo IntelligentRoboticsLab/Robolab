@@ -1,0 +1,130 @@
+{
+    "root": [
+        {
+            "name": "RShoulderPitch",
+            "angles": [
+                1.86205
+            ],
+            "times": [
+                0.3
+            ]
+        },
+        {
+            "name": "RShoulderRoll",
+            "angles": [
+                -0.5913
+            ],
+            "times": [
+                0.3
+            ]
+        },
+        {
+            "name": "RElbowYaw",
+            "angles": [
+                0.61815
+            ],
+            "times": [
+                0.3
+            ]
+        },
+        {
+            "name": "RElbowRoll",
+            "angles": [
+                0.0598679
+            ],
+            "times": [
+                0.3
+            ]
+        },
+        {
+            "name": "LShoulderPitch",
+            "angles": [
+                0.98
+            ],
+            "times": [
+                0.3
+            ]
+        },
+        {
+            "name": "LShoulderRoll",
+            "angles": [
+                0.531
+            ],
+            "times": [
+                0.3
+            ]
+        },
+        {
+            "name": "LElbowYaw",
+            "angles": [
+                -0.03
+            ],
+            "times": [
+                0.3
+            ]
+        },
+        {
+            "name": "LElbowRoll",
+            "angles": [
+                -0.57
+            ],
+            "times": [
+                0.3
+            ]
+        },
+        {
+            "name": "RHipRoll",
+            "angles": [
+                -0.73
+            ],
+            "times": [
+                0.3
+            ]
+        },
+        {
+            "name": "RHipPitch",
+            "angles": [
+                -1.47
+            ],
+            "times": [
+                0.3
+            ]
+        },
+        {
+            "name": "RKneePitch",
+            "angles": [
+                2
+            ],
+            "times": [
+                0.3
+            ]
+        },
+        {
+            "name": "RAnklePitch",
+            "angles": [
+                -0.13
+            ],
+            "times": [
+                0.3
+            ]
+        },
+        {
+            "name": "RAnkleRoll",
+            "angles": [
+                0.15
+            ],
+            "times": [
+                0.3
+            ]
+        },
+        {
+            "name": "LAnklePitch",
+            "angles": [
+                -1.18
+            ],
+            "times": [
+                0.3
+            ]
+        }
+    ]
+}

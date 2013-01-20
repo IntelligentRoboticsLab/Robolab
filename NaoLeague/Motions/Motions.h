@@ -26,11 +26,12 @@ class Motions
          *
          * @param naoqi_ip The IP address of the desired Naoqi instance
          */
-        Motions(string naoqi_ip);
+        Motions(const char *naoqi_ip);
         ~Motions();
 
         // standup motions
-        void getupFromBack();
+        void backToStand();
+        void bellyToStand();
 
         // stiffness functions
         void stiff();
@@ -41,9 +42,9 @@ class Motions
          * Struct to hold the information for a motion interpolation.
          */
         struct InterpolationValues {
-            vector<string> names;
-            vector<vector<float> > angles;
-            vector<vector<float> > times;
+            AL::ALValue names;
+            AL::ALValue angles;
+            AL::ALValue times;
         };
 
         /**
@@ -80,6 +81,15 @@ class Motions
          * m_interpolations.
          */
         void interpolate(string key);
+
+        /**
+         * Interpolates a motion using the values retrieved from
+         * m_interpolations. Uses Bezier.
+         *
+         * @param key The key belonging to the interpolation values in
+         * m_interpolations.
+         */
+        void interpolateWithBezier(string key);
 };
 
 #endif

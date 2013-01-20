@@ -1,0 +1,103 @@
+{
+    "root": [
+        {
+            "name": "LHipYawPitch",
+            "angles": [
+                -0.5
+            ],
+            "times": [
+                0.4
+            ]
+        },
+        {
+            "name": "RHipRoll",
+            "angles": [
+                -0.2
+            ],
+            "times": [
+                0.4
+            ]
+        },
+        {
+            "name": "RHipPitch",
+            "angles": [
+                -0.55
+            ],
+            "times": [
+                0.4
+            ]
+        },
+        {
+            "name": "RKneePitch",
+            "angles": [
+                2.11
+            ],
+            "times": [
+                0.4
+            ]
+        },
+        {
+            "name": "RAnklePitch",
+            "angles": [
+                -1.18
+            ],
+            "times": [
+                0.4
+            ]
+        },
+        {
+            "name": "RAnkleRoll",
+            "angles": [
+                0.07
+            ],
+            "times": [
+                0.4
+            ]
+        },
+        {
+            "name": "LHipRoll",
+            "angles": [
+                0.2
+            ],
+            "times": [
+                0.4
+            ]
+        },
+        {
+            "name": "LHipPitch",
+            "angles": [
+                -0.55
+            ],
+            "times": [
+                0.4
+            ]
+        },
+        {
+            "name": "LKneePitch",
+            "angles": [
+                2.11
+            ],
+            "times": [
+                0.4
+            ]
+        },
+        {
+            "name": "LAnklePitch",
+            "angles": [
+                -1.18
+            ],
+            "times": [
+                0.4
+            ]
+        },
+        {
+            "name": "LAnkleRoll",
+            "angles": [
+                -0.07
+            ],
+            "times": [
+                0.4
+            ]
+        }
+    ]
+}

@@ -1,0 +1,175 @@
+{
+    "root": [
+        {
+            "name": "RShoulderPitch",
+            "angles": [
+                2
+            ],
+            "times": [
+                0.4
+            ]
+        },
+        {
+            "name": "RShoulderRoll",
+            "angles": [
+                -0.3
+            ],
+            "times": [
+                0.4
+            ]
+        },
+        {
+            "name": "RElbowYaw",
+            "angles": [
+                0.7
+            ],
+            "times": [
+                0.4
+            ]
+        },
+        {
+            "name": "RElbowRoll",
+            "angles": [
+                0.06
+            ],
+            "times": [
+                0.4
+            ]
+        },
+        {
+            "name": "LShoulderPitch",
+            "angles": [
+                2
+            ],
+            "times": [
+                0.4
+            ]
+        },
+        {
+            "name": "LShoulderRoll",
+            "angles": [
+                0.3
+            ],
+            "times": [
+                0.4
+            ]
+        },
+        {
+            "name": "LElbowYaw",
+            "angles": [
+                -0.7
+            ],
+            "times": [
+                0.4
+            ]
+        },
+        {
+            "name": "LElbowRoll",
+            "angles": [
+                -0.05
+            ],
+            "times": [
+                0.4
+            ]
+        },
+        {
+            "name": "LHipYawPitch",
+            "angles": [
+                -0.7
+            ],
+            "times": [
+                0.4
+            ]
+        },
+        {
+            "name": "RHipRoll",
+            "angles": [
+                -0.23
+            ],
+            "times": [
+                0.4
+            ]
+        },
+        {
+            "name": "RHipPitch",
+            "angles": [
+                -1.57
+            ],
+            "times": [
+                0.4
+            ]
+        },
+        {
+            "name": "RKneePitch",
+            "angles": [
+                0.8
+            ],
+            "times": [
+                0.4
+            ]
+        },
+        {
+            "name": "RAnklePitch",
+            "angles": [
+                0.85
+            ],
+            "times": [
+                0.4
+            ]
+        },
+        {
+            "name": "RAnkleRoll",
+            "angles": [
+                0.06
+            ],
+            "times": [
+                0.4
+            ]
+        },
+        {
+            "name": "LHipRoll",
+            "angles": [
+                0.23
+            ],
+            "times": [
+                0.4
+            ]
+        },
+        {
+            "name": "LHipPitch",
+            "angles": [
+                -1.57
+            ],
+            "times": [
+                0.4
+            ]
+        },
+        {
+            "name": "LKneePitch",
+            "angles": [
+                0.8
+            ],
+            "times": [
+                0.4
+            ]
+        },
+        {
+            "name": "LAnklePitch",
+            "angles": [
+                0.85
+            ],
+            "times": [
+                0.4
+            ]
+        },
+        {
+            "name": "LAnkleRoll",
+            "angles": [
+                -0.06
+            ],
+            "times": [
+                0.4
+            ]
+        }
+    ]
+}

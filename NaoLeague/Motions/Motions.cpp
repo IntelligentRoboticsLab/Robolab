@@ -3,6 +3,7 @@
 #include <string>
 #include <iostream>
 
+#include <unistd.h>
 #include <assert.h>
 
 using namespace std;
@@ -11,12 +12,21 @@ using boost::property_tree::ptree;
 
 typedef pair<string, string> str_str_pair;
 
-Motions::Motions(string naoqi_ip)
+Motions::Motions(const char *naoqi_ip)
     : m_motProxy(naoqi_ip)
 {
-    // TODO: figure out a better organisation for loading the files
-    m_motion_filenames.push_back(pair<string, string>("/home/maarten/Projects/Robolab/NaoLeague/Motions/Motions/getupFromBack1.json", "getupFromBack1") );
-    m_motion_filenames.push_back(pair<string, string>("/home/maarten/Projects/Robolab/NaoLeague/Motions/Motions/getupFromBack2.json", "getupFromBack2") );
+    // TODO: figure out a better organisation for loading the files, this is
+    // terrible. Maybe just load every file in the folder and use the filename
+    // as key.
+    m_motion_filenames.push_back(pair<string, string>("/home/maarten/Projects/Robolab/NaoLeague/Motions/Motions/backToStand0.json", "backToStand0") );
+    m_motion_filenames.push_back(pair<string, string>("/home/maarten/Projects/Robolab/NaoLeague/Motions/Motions/backToStand1.json", "backToStand1") );
+    m_motion_filenames.push_back(pair<string, string>("/home/maarten/Projects/Robolab/NaoLeague/Motions/Motions/backToStand2.json", "backToStand2") );
+    m_motion_filenames.push_back(pair<string, string>("/home/maarten/Projects/Robolab/NaoLeague/Motions/Motions/backToStand3.json", "backToStand3") );
+    m_motion_filenames.push_back(pair<string, string>("/home/maarten/Projects/Robolab/NaoLeague/Motions/Motions/backToStand4.json", "backToStand4") );
+    m_motion_filenames.push_back(pair<string, string>("/home/maarten/Projects/Robolab/NaoLeague/Motions/Motions/backToStand5.json", "backToStand5") );
+    m_motion_filenames.push_back(pair<string, string>("/home/maarten/Projects/Robolab/NaoLeague/Motions/Motions/backToStand6.json", "backToStand6") );
+    m_motion_filenames.push_back(pair<string, string>("/home/maarten/Projects/Robolab/NaoLeague/Motions/Motions/backToStand7.json", "backToStand7") );
+    //m_motion_filenames.push_back(pair<string, string>("/home/maarten/Projects/Robolab/NaoLeague/Motions/Motions/bellyToStand0.json", "bellyToStand0") );
 
     // parse each motion file
     BOOST_FOREACH (str_str_pair &file_key_pair, m_motion_filenames) {
@@ -28,15 +38,54 @@ Motions::~Motions()
 {
 }
 
-void Motions::getupFromBack()
+// Stand up from the back
+void Motions::backToStand()
 {
     // lie down on back, move arms towards pushing position and legs upwards
-    setAngles(2, 0.7,
-              "HeadPitch", "HeadYaw",
-              -0.4, 0.0);
+    Motions::setAngles(2, 0.4, "HeadPitch", "HeadYaw", -0.4, 0.0);
+    interpolate("backToStand0");
+    interpolate("backToStand1");
+    Motions::setAngles(7, 0.3, "LHipYawPitch", "RKneePitch", "LKneePitch", "RHipRoll", "LHipRoll", "RAnkleRoll", "LAnkleRoll", 0, 0, 0, 0, 0, 0, 0);
+    Motions::setAngles(4, 0.3, "LHipPitch", "LAnklePitch", "RHipPitch", "RAnklePitch", -1.5, 0.8, -1.5, 0.8);
+    usleep(1000000);
 
-    interpolate("getupFromBack1");
-    interpolate("getupFromBack2");
+    // move legs down, arms down to push
+    Motions::setAngles(4, 0.9, "LShoulderPitch", "RShoulderPitch", "RHipPitch", "LHipPitch", 2, 2, -0.7, -0.7);
+    usleep(100000);
+
+    // reset legs
+    Motions::setAngles(2, 0.3, "RHipPitch", "LHipPitch", -1.5, -1.5);
+    usleep(200000);
+
+    // push up with arms
+    Motions::setAngles(2, 0.5, "RShoulderRoll", "LShoulderRoll", -0.25, 0.25);
+    Motions::setAngles(2, 0.5, "LElbowRoll", "RElbowRoll", 0, 0);
+    usleep(400000);
+
+    // twist legs around to sit with legs wide
+    interpolate("backToStand2");
+
+    // move one arm backwards, one arm upwards, move legs towards body
+    Motions::setAngles(2, 0.4, "HeadPitch", "HeadYaw", 0.5, 0.0);
+    interpolate("backToStand3");
+
+    // move legs further towards body
+    interpolate("backToStand4");
+
+    // Lift arm from ground, move right leg towards body
+    interpolate("backToStand5");
+
+    // lift right leg further towards left
+    interpolate("backToStand6");
+
+    // move legs closer to eachother (stance)
+    interpolate("backToStand7");
+}
+
+// Stand up from belly
+void Motions::bellyToStand()
+{
+    interpolateWithBezier("bellyToStand0");
 }
 
 void Motions::setAngles(int numJoints, double speed, ...)
@@ -45,7 +94,7 @@ void Motions::setAngles(int numJoints, double speed, ...)
     // so its length is 2*numJoints
     va_list args;
     int list_length = 2 * numJoints;
-    va_start(args, list_length);
+    va_start(args, speed);
     ALValue names, angles;
 
     // first put the joint names in an array
@@ -72,6 +121,7 @@ void Motions::parseMotionFile(string filename, string key)
         boost::property_tree::read_json(filename, pt);
     } catch (boost::exception &ex) {
         cout << "File " << filename << " could not be loaded." << endl;
+        exit(0);
     }
 
     InterpolationValues ip_values;
@@ -79,20 +129,20 @@ void Motions::parseMotionFile(string filename, string key)
     // iterate through each joint contained in the root list, and append its
     // values to the InterpolationValues struct
     BOOST_FOREACH (const ptree::value_type &element, pt.get_child("root")) {
-        vector<float> angles_vector;
-        vector<float> times_vector;
+        ALValue angles_value;
+        ALValue times_value;
 
         // read the angle and time values as a vector
         BOOST_FOREACH (const ptree::value_type& ele, element.second.get_child("angles")) {
-            angles_vector.push_back(ele.second.get<float>(""));
+            angles_value.arrayPush(ele.second.get<float>(""));
         }
         BOOST_FOREACH (const ptree::value_type& ele, element.second.get_child("times")) {
-            times_vector.push_back(ele.second.get<float>(""));
+            times_value.arrayPush(ele.second.get<float>(""));
         }
 
-        ip_values.names.push_back( element.second.get<string>("name") );
-        ip_values.angles.push_back(angles_vector);
-        ip_values.times.push_back(times_vector);
+        ip_values.names.arrayPush( element.second.get<string>("name") );
+        ip_values.angles.arrayPush(angles_value);
+        ip_values.times.arrayPush(times_value);
     }
 
     m_interpolations[key] = ip_values;
@@ -102,27 +152,46 @@ void Motions::interpolate(string key)
 {
     InterpolationValues iv = m_interpolations[key];
     
-    // convert the vectors into ALValues
-    // TODO: just make them ALValues in the first place
-    ALValue al_names,
-            al_angles,
-            al_times;
+    m_motProxy.angleInterpolation(iv.names, iv.angles, iv.times, true);
+}
 
-    unsigned size = iv.angles.size();
-
-    for (unsigned i = 0; i < size; ++i) {
-        al_names.arrayPush(iv.names[i]);
-        al_angles.arrayPush(iv.angles[i]);
-        al_times.arrayPush(iv.times[i]);
-    }
-
-    // actuate!
-    m_motProxy.angleInterpolation(iv.names, al_angles, al_times, true);
+void Motions::interpolateWithBezier(string key)
+{
+    InterpolationValues iv = m_interpolations[key];
+    
+    m_motProxy.angleInterpolationBezier(iv.names, iv.times, iv.angles);
 }
 
 void Motions::stiff()
 {
-    m_motProxy.setStiffnesses("Body", 0.8);
+    ALValue names,
+            stiffnesses;
+
+    names = ALValue::array("RArm", "LArm", "LLeg", "RLeg", "Head");
+    stiffnesses.arrayPush(0.6);
+    stiffnesses.arrayPush(0.6);
+    stiffnesses.arrayPush(0.6);
+    stiffnesses.arrayPush(0.6);
+    stiffnesses.arrayPush(0.6);
+    stiffnesses.arrayPush(0.6);
+    stiffnesses.arrayPush(0.6);
+    stiffnesses.arrayPush(0.6);
+    stiffnesses.arrayPush(0.95);
+    stiffnesses.arrayPush(0.95);
+    stiffnesses.arrayPush(0.95);
+    stiffnesses.arrayPush(0.95);
+    stiffnesses.arrayPush(0.95);
+    stiffnesses.arrayPush(0.95);
+    stiffnesses.arrayPush(0.95);
+    stiffnesses.arrayPush(0.95);
+    stiffnesses.arrayPush(0.95);
+    stiffnesses.arrayPush(0.95);
+    stiffnesses.arrayPush(0.95);
+    stiffnesses.arrayPush(0.95);
+    stiffnesses.arrayPush(0.6);
+    stiffnesses.arrayPush(0.6);
+
+    m_motProxy.setStiffnesses(names, stiffnesses);
 }
 
 void Motions::unstiff()
@@ -130,13 +199,22 @@ void Motions::unstiff()
     m_motProxy.setStiffnesses("Body", 0);
 }
 
-int main(int argc, char const *argv[])
+int main(int argc, const char *argv[])
 {
-    Motions m( string("0.0.0.0") );
+    // read the IP from the commandline args
+    const char *ip;
+    if (argc >= 2) {
+        ip = argv[1];
+    } else {
+        ip = "0.0.0.0";
+    }
+
+    Motions m(ip);
 
     // some testing
     m.stiff();
-    m.getupFromBack();
+    m.backToStand();
+    usleep(10000000);
     m.unstiff();
 
     return 0;

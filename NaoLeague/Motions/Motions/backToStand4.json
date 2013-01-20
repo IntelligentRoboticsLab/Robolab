@@ -1,0 +1,103 @@
+{
+    "root": [
+        {
+            "name": "LHipYawPitch",
+            "angles": [
+                -1.07
+            ],
+            "times": [
+                0.6
+            ]
+        },
+        {
+            "name": "RHipRoll",
+            "angles": [
+                -0.656
+            ],
+            "times": [
+                0.6
+            ]
+        },
+        {
+            "name": "RHipPitch",
+            "angles": [
+                -1.67
+            ],
+            "times": [
+                0.6
+            ]
+        },
+        {
+            "name": "RKneePitch",
+            "angles": [
+                1.63
+            ],
+            "times": [
+                0.6
+            ]
+        },
+        {
+            "name": "RAnklePitch",
+            "angles": [
+                0.32
+            ],
+            "times": [
+                0.6
+            ]
+        },
+        {
+            "name": "RAnkleRoll",
+            "angles": [
+                -0.004
+            ],
+            "times": [
+                0.6
+            ]
+        },
+        {
+            "name": "LHipRoll",
+            "angles": [
+                -0.01
+            ],
+            "times": [
+                0.6
+            ]
+        },
+        {
+            "name": "LHipPitch",
+            "angles": [
+                -0.01
+            ],
+            "times": [
+                0.6
+            ]
+        },
+        {
+            "name": "LKneePitch",
+            "angles": [
+                2.11254
+            ],
+            "times": [
+                0.6
+            ]
+        },
+        {
+            "name": "LAnklePitch",
+            "angles": [
+                -1
+            ],
+            "times": [
+                0.6
+            ]
+        },
+        {
+            "name": "LAnkleRoll",
+            "angles": [
+                0.10128598
+            ],
+            "times": [
+                0.6
+            ]
+        }
+    ]
+}
