@@ -45,12 +45,12 @@ void Motions::backToStand()
     Motions::setAngles(2, 0.4, "HeadPitch", "HeadYaw", -0.4, 0.0);
     interpolate("backToStand0");
     interpolate("backToStand1");
-    Motions::setAngles(7, 0.3, "LHipYawPitch", "RKneePitch", "LKneePitch", "RHipRoll", "LHipRoll", "RAnkleRoll", "LAnkleRoll", 0, 0, 0, 0, 0, 0, 0);
+    Motions::setAngles(7, 0.3, "LHipYawPitch", "RKneePitch", "LKneePitch", "RHipRoll", "LHipRoll", "RAnkleRoll", "LAnkleRoll", 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
     Motions::setAngles(4, 0.3, "LHipPitch", "LAnklePitch", "RHipPitch", "RAnklePitch", -1.5, 0.8, -1.5, 0.8);
     usleep(1000000);
 
     // move legs down, arms down to push
-    Motions::setAngles(4, 0.9, "LShoulderPitch", "RShoulderPitch", "RHipPitch", "LHipPitch", 2, 2, -0.7, -0.7);
+    Motions::setAngles(4, 0.9, "LShoulderPitch", "RShoulderPitch", "RHipPitch", "LHipPitch", 2.0, 2.0, -0.7, -0.7);
     usleep(100000);
 
     // reset legs
@@ -59,7 +59,7 @@ void Motions::backToStand()
 
     // push up with arms
     Motions::setAngles(2, 0.5, "RShoulderRoll", "LShoulderRoll", -0.25, 0.25);
-    Motions::setAngles(2, 0.5, "LElbowRoll", "RElbowRoll", 0, 0);
+    Motions::setAngles(2, 0.5, "LElbowRoll", "RElbowRoll", 0.0, 0.0);
     usleep(400000);
 
     // twist legs around to sit with legs wide
@@ -109,6 +109,13 @@ void Motions::setAngles(int numJoints, double speed, ...)
 
     va_end(args);
 
+    /*
+    for (int i = 0; i < names.getSize(); ++i) {
+        cout << "(" << names[i] << ", " << angles[i] << "), ";
+    }
+    */
+
+    cout << endl << endl;
     m_motProxy.setAngles(names, angles, speed);
 }
 
