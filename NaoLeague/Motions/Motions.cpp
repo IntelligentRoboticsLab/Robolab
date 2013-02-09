@@ -18,14 +18,14 @@ Motions::Motions(const char *naoqi_ip)
     // TODO: figure out a better organisation for loading the files, this is
     // terrible. Maybe just load every file in the folder and use the filename
     // as key.
-    m_motion_filenames.push_back(pair<string, string>("/home/maarten/Projects/Robolab/NaoLeague/Motions/Motions/backToStand0.json", "backToStand0") );
-    m_motion_filenames.push_back(pair<string, string>("/home/maarten/Projects/Robolab/NaoLeague/Motions/Motions/backToStand1.json", "backToStand1") );
-    m_motion_filenames.push_back(pair<string, string>("/home/maarten/Projects/Robolab/NaoLeague/Motions/Motions/backToStand2.json", "backToStand2") );
-    m_motion_filenames.push_back(pair<string, string>("/home/maarten/Projects/Robolab/NaoLeague/Motions/Motions/backToStand3.json", "backToStand3") );
-    m_motion_filenames.push_back(pair<string, string>("/home/maarten/Projects/Robolab/NaoLeague/Motions/Motions/backToStand4.json", "backToStand4") );
-    m_motion_filenames.push_back(pair<string, string>("/home/maarten/Projects/Robolab/NaoLeague/Motions/Motions/backToStand5.json", "backToStand5") );
-    m_motion_filenames.push_back(pair<string, string>("/home/maarten/Projects/Robolab/NaoLeague/Motions/Motions/backToStand6.json", "backToStand6") );
-    m_motion_filenames.push_back(pair<string, string>("/home/maarten/Projects/Robolab/NaoLeague/Motions/Motions/backToStand7.json", "backToStand7") );
+    m_motion_filenames.push_back(pair<string, string>("Motions/backToStand0.json", "backToStand0") );
+    m_motion_filenames.push_back(pair<string, string>("Motions/backToStand1.json", "backToStand1") );
+    m_motion_filenames.push_back(pair<string, string>("Motions/backToStand2.json", "backToStand2") );
+    m_motion_filenames.push_back(pair<string, string>("Motions/backToStand3.json", "backToStand3") );
+    m_motion_filenames.push_back(pair<string, string>("Motions/backToStand4.json", "backToStand4") );
+    m_motion_filenames.push_back(pair<string, string>("Motions/backToStand5.json", "backToStand5") );
+    m_motion_filenames.push_back(pair<string, string>("Motions/backToStand6.json", "backToStand6") );
+    m_motion_filenames.push_back(pair<string, string>("Motions/backToStand7.json", "backToStand7") );
     //m_motion_filenames.push_back(pair<string, string>("/home/maarten/Projects/Robolab/NaoLeague/Motions/Motions/bellyToStand0.json", "bellyToStand0") );
 
     // parse each motion file
@@ -44,7 +44,6 @@ void Motions::backToStand()
     // lie down on back, move arms towards pushing position and legs upwards
     Motions::setAngles(2, 0.4, "HeadPitch", "HeadYaw", -0.4, 0.0);
     interpolate("backToStand0");
-    interpolate("backToStand1");
     Motions::setAngles(7, 0.3, "LHipYawPitch", "RKneePitch", "LKneePitch", "RHipRoll", "LHipRoll", "RAnkleRoll", "LAnkleRoll", 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
     Motions::setAngles(4, 0.3, "LHipPitch", "LAnklePitch", "RHipPitch", "RAnklePitch", -1.5, 0.8, -1.5, 0.8);
     usleep(1000000);

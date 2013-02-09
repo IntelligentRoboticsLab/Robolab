@@ -39,6 +39,46 @@
             "times": [
                 0.5
             ]
+        },
+        {
+            "name": "RShoulderPitch",
+            "angles": [
+                0,
+                0.8
+            ],
+            "times": [
+                0.5,
+                0.8
+            ]
+        },
+        {
+            "name": "RShoulderRoll",
+            "angles": [
+                -1.0,
+                -0.5
+            ],
+            "times": [
+                0.5,
+                0.8
+            ]
+        },
+        {
+            "name": "RElbowRoll",
+            "angles": [
+                1.5
+            ],
+            "times": [
+                0.5
+            ]
+        },
+        {
+            "name": "RElbowYaw",
+            "angles": [
+                -1.9
+            ],
+            "times": [
+                0.5
+            ]
         }
     ]
 }
